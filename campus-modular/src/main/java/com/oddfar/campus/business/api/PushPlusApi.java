@@ -22,15 +22,16 @@ public class PushPlusApi {
             return;
         }
         String title, content;
+        String phoneNumberStr = String.valueOf(iUser.getMobile());
+        String lastFourDigits = phoneNumberStr.substring(phoneNumberStr.length() - 4);
+        content = lastFourDigits + '-' + operLog.getLogContent();
         if (operLog.getStatus() == 0) {
             //预约成功
             title = iUser.getRemark() + "-i茅台执行成功";
-            content = iUser.getMobile() + System.lineSeparator() + operLog.getLogContent();
             AsyncManager.me().execute(sendNotice(token, title, content, "txt"));
         } else {
             //预约失败
             title = iUser.getRemark() + "-i茅台执行失败";
-            content = iUser.getMobile() + System.lineSeparator() + operLog.getLogContent();
             AsyncManager.me().execute(sendNotice(token, title, content, "txt"));
         }
 

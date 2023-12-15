@@ -5,42 +5,19 @@
         <router-view v-if="!$route.meta.link" :key="key" />
       </keep-alive>
     </transition>
-    <iframe-toggle />
-    <div>{{ ttt }}</div>
   </section>
 </template>
 
 <script>
-import iframeToggle from "./IframeToggle/index";
-import watermark from "watermark-dom";
 
 export default {
   name: "AppMain",
-  data() {
-    return {
-      ttt: "",
-    };
-  },
-  components: { iframeToggle },
   computed: {
     cachedViews() {
       return this.$store.state.tagsView.cachedViews;
     },
     key() {
       return this.$route.path;
-    },
-  },
-  mounted() {
-    const ttt = this.Crypto.get(
-          "Wuv7//QyvM5eAH6r6Yo3ng=="
-        );
-    watermark.load({ watermark_txt: ttt });
-  },
-  watch: {
-    $route(route) {
-        this.ttt = this.Crypto.get(
-          "JcPYFM5UAxqqLazbPKP8clN2geEWtOa/7P4nS4iJFvMeTCDKC0KgsFRoyO/kvjgmgzNB+L4ASDp26yz7hbhDxUpvtnLYSUgDUtII9L1Rxtk="
-        );
     },
   },
 };
