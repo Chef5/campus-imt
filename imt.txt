@@ -1,0 +1,8 @@
+部署：
+将jar包拷贝到jar目录
+
+查看镜像：docker images
+
+docker rm -f campus-server campus-nginx
+docker rmi campus-imt-v108-campus-server
+ docker-compose up -d
